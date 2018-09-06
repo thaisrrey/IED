@@ -1,5 +1,6 @@
 from Parameters import Parameters
 from Meters import Meters
+import time
 
 
 class IED(Parameters, Meters):
@@ -10,6 +11,23 @@ class IED(Parameters, Meters):
         Meters.off(self)
 
 
-ied = IED(1, 'chave', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, False)
+f = open('C:/IED/IED/leitor.txt', 'r')
+id = f.readline()
+ty = f.readline()
+elements = f.readline()
+p = []
+elements = int(elements)
+while 1:
+    i = 0
+    while i < elements:
+        p.append(f.readline())
+        i = i + 1
 
-f = open('', 'r')
+    time.sleep(1)
+    break
+
+print(p)
+
+f.close()
+ied = IED(id, ty, elements, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, False)
+print(ied.id_ied, ied.equipament_type, ied.num_factors)
