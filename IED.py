@@ -17,14 +17,26 @@ ty = f.readline()
 elements = f.readline()
 p = []
 elements = int(elements)
+i = 0
+while i < elements:
+    x = f.readline().split()
+    p.append(x)
+    i = i + 1
+
 while 1:
     i = 0
-    while i < elements:
-        p.append(f.readline())
-        i = i + 1
-
     time.sleep(1)
-    break
+    while i < elements:
+        p_antes = p
+        print(p_antes[i][1])
+        x = f.readline().split()
+        p.clear()
+        p.append(x)
+        i = i + 1
+        if (0.9 * p_antes[i][1]) <= p[i][1] <= (1.1 * p_antes[i][1]):
+            continue
+        else:
+            break
 
 print(p)
 
